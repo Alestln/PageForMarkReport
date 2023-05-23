@@ -1,0 +1,42 @@
+﻿body {
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+.page {
+    display: flex;
+    width: 210mm;
+    height: 297mm;
+    background-color: rgb(252, 252, 252);
+}
+
+.reportPlace {
+    width: 174mm;
+    height: 283mm;
+    margin-top: 7mm;
+    margin-left: 25mm;
+    margin-right: 11mm;
+    margin-bottom: 7mm;
+    background-color: rgb(252, 252, 252);
+}
+
+.font{
+    font-size: 10px;
+}
+
+th {
+    padding-bottom: 1px !important;
+    padding-top: 1px !important;
+}
+
+td {
+    padding-bottom: 1px !important;
+    padding-top: 1px !important;
+}
+
+label {
+    padding-top: 3px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}

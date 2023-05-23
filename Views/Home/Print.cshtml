@@ -1,0 +1,166 @@
+﻿@model ToAspNetProject.MarkReportPrintDto
+
+@{
+    ViewData["Title"] = "Print";
+    Layout = "~/Views/Shared/_MarkReportLayout.cshtml";
+}
+
+
+<div class="page">
+    <div class="reportPlace">
+        <h5 class="fw-normal font" style="text-align: right;">Додаток 3</h5>
+        <h5 class="fw-normal font" style="text-align: center;  line-height: 10px;">ДЕРЖАВНИЙ УНІВЕРСИТЕТ "ОДЕСЬКА ПОЛІТЕХНІКА"</h5>
+        <h5 class="fw-normal font" style="text-align: center; line-height: 10px;">ІНСТИТУТ КОМП'ЮТЕРНИХ СИСТЕМ</h5>
+
+        <div style="display: flex;">
+            <div style="justify-content: left; margin-top: 1%; display: flex; width:100%" class="font">
+                <div>
+                    <h5 class="fw-normal font">Спеціальність</h5>
+                    <h5 class="fw-normal font">Освіт.програма</h5>
+                    <h5 class="fw-normal font">Навчальний рік</h5>
+                </div>
+                <div style="margin-left:5%; margin-top: -1%; text-align: center;">
+                    <label class="border border-dark w-100">@Model.Specialization</label><br />
+                    <label class="border border-dark w-100">@Model.StudyProgram</label> <br />
+                    <label class="border border-dark w-100">@Model.AnnualYear</label> <br />
+                </div>
+            </div>
+            <div style="text-align: left; margin-right: 1%; display: flex;" class="font">
+                <div>
+                    <h5 class="fw-normal font">Семестр</h5>
+                    <h5 class="fw-normal font">Курс</h5>
+                    <h5 class="fw-normal font">Група</h5>
+                </div>
+                <div style="margin-left:10%; margin-top: -2%; text-align: center">
+                    <label class="border border-dark w-100">@Model.Semester</label> <br />
+                    <label class="border border-dark w-100">@Model.Course</label> <br />
+                    <label class="border border-dark w-100">@Model.GroupName</label> <br />
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; width: 100%; margin-left: 25%">
+            <div>
+                <h5 class="fw-normal font">Відомість обліку успішності №</h5>
+            </div>
+            <div style ="margin-left:1%; margin-top: -1%; width: 15%; text-align: center">
+                <label class="border border-dark w-100 font">@Model.Id</label> <br />
+            </div>
+        </div>
+        <div style="display: flex; width: 100%; margin-left: 40%; margin-top: 1px">
+            <div>
+                <h5 class="fw-normal font">від: </h5>
+            </div>
+            <div style="margin-left:1%; margin-top: -1%; width: 25%; text-align: center">
+                <label class="border border-dark w-100 font">@Model.Date.ToString("d")</label> <br />
+            </div>
+        </div>
+
+        <div style="display: flex; width:100%; justify-content: right; margin-bottom: 1px" class="font">
+            <div style="margin-right: 18px">
+                <h5 class="fw-normal font">з дисципліни</h5>
+                <h5 class="fw-normal font">Форма семестрового контролю</h5>
+                <h5 class="fw-normal font">Підсумкову оцінку виставив викладач</h5>
+                <h5 class="fw-normal font">Поточний контроль здійснив викладач</h5>
+            </div>
+            <div style="width: 70%; text-align: center;">
+                <label class="border border-dark w-100">@Model.SubjectComponentTitle</label> <br />
+                <label class="border border-dark w-100">Залік</label> <br />
+                <label class="border border-dark w-100">@Model.EmployeeSubjectName</label> <br />
+                <label class="border border-dark w-100">@Model.VeryfiEmployeeSubjectName</label> <br />
+            </div>
+        </div>
+
+
+        <table class="table table-bordered border-0 font" style="text-align: center">
+            <thead>
+                <tr>
+                    <th rowspan="2" valign="middle">№ П/П</th>
+                    <th rowspan="2" valign="middle">Прізвище, ініціали студента</th>
+                    <th rowspan="2" valign="middle">№ інд. навч. плану</th>
+                    <th colspan="3">Підсумкова оцінка за шкалою</th>
+                    <th rowspan="2" valign="middle">Підпис викладача</th>
+                </tr>
+                <tr>
+                    <th class="border border-dark" scope="col">Стобальна</th>
+                    <th class="border border-dark" scope="col">Національна</th>
+                    <th class="border border-dark" scope="col">ECTS</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{var count = 1;}
+                @foreach(var item in Model.Marks)
+                {
+                    <tr>
+                        <td>@(count++)</td>
+                        <td style="text-align: left">@item.FullName</td>
+                        <td>@Model.StudyPlanId</td>
+                        <td>@item.Value</td>
+                        <td>2</td>
+                        <td>F</td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h5 class="fw-normal font">Директор інституту ____________________________________________________________</h5>
+        <h5 class="fw-normal font" style="text-align: center">Підсумки складання екзамену (заліку)</h5>
+        <table class="table table-bordered border-0 font" style="text-align: center; width:70%">
+            <thead>
+                <tr>
+                    <th rowspan="2" valign="middle">Всього оцінок</th>
+                    <th rowspan="2" valign="middle">Бали</th>
+                    <th rowspan="2" valign="middle">Оцінка ECTS</th>
+                    <th colspan="2">Оцінка за національною шкалою</th>
+                </tr>
+                <tr>
+                    <th class="border border-dark" scope="col">екзамен</th>
+                    <th class="border border-dark" scope="col">залік</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>90-100</td>
+                    <td>A</td>
+                    <td>відмінно</td>
+                    <td valign="middle" rowspan="5">Зараховано</td>
+                </tr>
+                <tr>
+                    <td rowspan="2"></td>
+                    <td>82-89</td>
+                    <td>B</td>
+                    <td valign="middle" rowspan="2">добре</td>
+                </tr>
+                <tr>
+                    <td scope="row">75-81</td>
+                    <td>C</td>
+                </tr>
+                <tr>
+                    <td rowspan="2"></td>
+                    <td>67-74</td>
+                    <td>D</td>
+                    <td valign="middle" rowspan="2">задовільно</td>
+                </tr>
+                <tr>
+                    <td scope="row">60-66</td>
+                    <td>E</td>
+                </tr>
+                <tr>
+                    <td rowspan="2"></td>
+                    <td>35-59</td>
+                    <td>FX</td>
+                    <td valign="middle" rowspan="2">незадовільно</td>
+                    <td valign="middle" rowspan="2">Не зараховано</td>
+                </tr>
+                <tr>
+                    <td scope="row">0-34</td>
+                    <td>F</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h5 class="fw-normal font">Екзаменатор (викладач) ________________________________________________________</h5>
+    </div>
+    
+</div>
